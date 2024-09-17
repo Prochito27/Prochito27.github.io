@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Futbol LCZ 2024</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f4f6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .header, .footer {
+            background-color: #1f2937;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header .title {
+            font-family: 'Roboto', sans-serif;
+            font-size: 36px;
+            font-weight: bold;
+            text-align: center;
+            flex: 1;
+        }
+        .header .logo, .footer .ad-space {
+            width: 500px;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 14px;
+        }
+        .header .logo img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+        .content {
+            padding: 20px;
+        }
+        .image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .group {
+            margin-bottom: 40px;
+        }
+        .group h2 {
+            background-color: #1f2937;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            margin: 0;
+            border-radius: 5px;
+        }
+        .team-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        .team-table th, .team-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        .team-table th {
+            background-color: #374151;
+            color: white;
+        }
+        .team-table td {
+            background-color: #f9fafb;
+        }
+        .mvp-section {
+            margin-top: 40px;
+            text-align: center;
+        }
+        .mvp-section h2 {
+            background-color: #1f2937;
+            color: white;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        .mvp-images {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .mvp-images img {
+            width: 60%; /* Ajusta este valor según el tamaño que desees */
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .ad-space video {
+            width: 700px;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .watermark {
+            text-align: center;
+            font-size: 40px;
+            color: #9ca3af;
+        }
+    </style>
+</head>
+<body>
+    <!-- Banner Superior -->
+    <div class="header">
+        <div class="logo">
+            <img src="images/logo.png" alt="Logo 1">
+        </div>
+        <div class="title">Futbol LCZ <br> 2024</div>
+        <div class="logo">
+            <img src="images/logo2.png" alt="Logo 2">
+        </div>
+    </div>
+
+    <!-- Imagen Centrada -->
+    <div class="image-container">
+        <img src="images/path_to_image.jpeg" alt="Imagen Principal">
+    </div>
+
+    <!-- Contenido Principal -->
+    <div class="content">
+        <!-- Grupo A -->
+        <div class="group">
+            <h2>Grupo A</h2>
+            <table class="team-table" id="grupoA">
+                <thead>
+                    <tr>
+                        <th>Equipo</th>
+                        <th>Goles a Favor</th>
+                        <th>Goles en Contra</th>
+                        <th>Victorias</th>
+                        <th>Derrotas</th>
+                        <th>Puntos</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1ro Basico A</td>
+                        <td>5</td>
+                        <td>3</td>
+                        <td>2</td>
+                        <td>1</td>
+                        <td>7</td>
+                        <td>16</td>
+                    </tr>
+                    <tr>
+                        <td>1ro Basico B</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>5</td>
+                        <td>13</td>
+                    </tr>
+                    <tr>
+                        <td>1ro Basico C</td>
+                        <td>6</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>0</td>
+                        <td>9</td>
+                        <td>20</td>
+                    </tr>
+                    <tr>
+                        <td>2do Basico A</td>
+                        <td>2</td>
+                        <td>5</td>
+                        <td>1</td>
+                        <td>3</td>
+                        <td>3</td>
+                        <td>11</td>
+                    </tr>
+                    <tr>
+                        <td>2do Basico B</td>
+                        <td>4</td>
+                        <td>4</td>
+                        <td>2</td>
+                        <td>2</td>
+                        <td>6</td>
+                        <td>16</td>
+                    </tr>
+                    <tr>
+                        <td>3ro Basico A</td>
+                        <td>7</td>
+                        <td>1</td>
+                        <td>4</td>
+                        <td>0</td>
+                        <td>12</td>
+                        <td>24</td>
+                    </tr>
+                    <tr>
+                        <td>3ro Basico B</td>
+                        <td>3</td>
+                        <td>6</td>
+                        <td>1</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>14</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Grupo B -->
+        <div class="group">
+            <h2>Grupo B</h2>
+            <table class="team-table" id="grupoB">
+                <thead>
+                    <tr>
+                        <th>Equipo</th>
+                        <th>Goles a Favor</th>
+                        <th>Goles en Contra</th>
+                        <th>Victorias</th>
+                        <th>Derrotas</th>
+                        <th>Puntos</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>4to Bachillerato</td>
+                        <td>5</td>
+                        <td>2</td>
+                        <td>2</td>
+                        <td>1</td>
+                        <td>8</td>
+                        <td>18</td>
+                    </tr>
+                    <tr>
+                        <td>5to Bachillerato A</td>
+                        <td>6</td>
+                        <td>3</td>
+                        <td>3</td>
+                        <td>0</td>
+                        <td>9</td>
+                        <td>21</td>
+                    </tr>
+                    <tr>
+                        <td>5to Bachillerato B</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>5</td>
+                        <td>13</td>
+                    </tr>
+                    <tr>
+                        <td>4to Perito</td>
+                        <td>7</td>
+                        <td>2</td>
+                        <td>4</td>
+                        <td>0</td>
+                        <td>12</td>
+                        <td>25</td>
+                    </tr>
+                    <tr>
+                        <td>5to Perito</td>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>2</td>
+                        <td>2</td>
+                        <td>6</td>
+                        <td>17</td>
+                    </tr>
+                    <tr>
+                        <td>6to Perito</td>
+                        <td>5</td>
+                        <td>4</td>
+                        <td>3</td>
+                        <td>1</td>
+                        <td>9</td>
+                        <td>19</td>
+                    </tr>
+                    <tr>
+                        <td>7mo Perito</td>
+                        <td>2</td>
+                        <td>6</td>
+                        <td>1</td>
+                        <td>3</td>
+                        <td>3</td>
+                        <td>12</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- MVP Section -->
+        <div class="mvp-section">
+            <h2>MVP - Mejores Jugadores</h2>
+            <div class="mvp-images">
+                <img src="images/path_to_mvp1.jpeg" alt="MVP 1">
+            </div>
+        </div>
+    </div>
+
+    <!-- Banner Inferior -->
+    <div class="footer">
+        <div class="ad-space">
+            <video src="images/path_to_video1.mp4" autoplay muted loop></video>
+        </div>
+        <div class="watermark">Direct by Prochnost ❤️</div>
+        <div class="ad-space">
+            <video src="images/path_to_video2.mp4" autoplay muted loop></video>
+        </div>
+    </div>
+
+    <script>
+        function sortTable(tableId) {
+            const table = document.getElementById(tableId);
+            const rows = Array.from(table.rows).slice(1);
+
+            rows.sort((a, b) => {
+                const totalA = parseInt(a.cells[6].textContent);
+                const totalB = parseInt(b.cells[6].textContent);
+                return totalB - totalA;
+            });
+
+            rows.forEach(row => table.appendChild(row));
+        }
+
+        window.onload = () => {
+            sortTable('grupoA');
+            sortTable('grupoB');
+        };
+    </script>
+</body>
+</html>
