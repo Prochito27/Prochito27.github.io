@@ -16,7 +16,7 @@
         }
 
         .header, .footer {
-            background-color: #1f2937;
+            background-color: #3498db;
             color: white;
             padding: 10px 20px;
             display: flex;
@@ -32,6 +32,7 @@
             text-align: center;
             flex-grow: 1;
             margin: 0 10px;
+            text-decoration-color: #f9fafb;
         }
 
         .header .logo {
@@ -180,6 +181,38 @@
                 font-size: 24px;
             }
         }
+
+        /* Actualización del estilo del pie de página */
+        .footer {
+            background-color: #1f2937;
+            color: white;
+            padding: 20px 20px 10px;
+            text-align: center;
+        }
+
+        .watermark {
+            font-size: 24px; /* Tamaño más elegante */
+            font-weight: 600; /* Aumenta el grosor del texto */
+            margin-bottom: 20px; /* Añade espacio entre el texto y los videos */
+            color: #d1d5db; /* Color más suave */
+        }
+
+        .ad-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px; /* Añade espacio entre los dos videos */
+        }
+
+        .ad-space {
+            width: 45%; /* Ajusta el ancho de los videos para que ambos ocupen el mismo espacio */
+        }
+
+        .ad-space video {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 10px;
+        }
     </style>
 </head>
 <body>
@@ -189,6 +222,7 @@
             <img src="images/logo.png" alt="Logo 1">
         </div>
         <div class="title">Futbol LCZ <br> 2024</div>
+            <a class="title" href="horarios.html"> Horarios</a>
         <div class="logo">
             <img src="images/logo2.png" alt="Logo 2">
         </div>
@@ -284,6 +318,20 @@
             </table>
         </div>
 
+        <!-- Banner de Videos en el Centro -->
+     <div class="footer">
+        <div class="watermark">
+        </div>
+        <div class="ad-container">
+            <div class="ad-space">
+                <video src="images/path-to-video3.mp4" autoplay muted loop></video>
+            </div>
+            <div class="ad-space">
+                <video src="images/path-to-video4.mp4" autoplay muted loop></video>
+            </div>
+        </div>
+    </div>
+
         <!-- Grupo B -->
         <div class="group">
             <h2>Grupo B</h2>
@@ -345,66 +393,69 @@
                         <td>0</td>
                         <td>0</td>
                     </tr>
-                    <tr>
-                        <td>6to Perito</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                    </tr>
-                    <tr>
-                        <td>7mo Perito</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                    </tr>
                 </tbody>
             </table>
         </div>
 
-        <!-- MVP Section -->
+        <!-- Sección de MVP -->
         <div class="mvp-section">
-            <h2>MVP - Mejores Jugadores</h2>
+            <h2>Mejores Jugadores (MVP)</h2>
             <div class="mvp-images">
                 <img src="images/path_to_mvp1.jpeg" alt="MVP 1">
             </div>
         </div>
     </div>
 
-    <!-- Banner Inferior -->
+    <!-- Pie de página con los videos de anuncios y la marca de agua -->
     <div class="footer">
-        <div class="ad-space">
-            <video src="images/path-to-video1.mp4" autoplay muted loop></video>
+        <div class="watermark">
+            Direct by Prochnost ❤️
         </div>
-        <div class="watermark">Direct by Prochnost ❤️</div>
-        <div class="ad-space">
-            <video src="images/path-to-video2.mp4" autoplay muted loop></video>
+        <div class="ad-container">
+            <div class="ad-space">
+                <video src="images/path-to-video1.mp4" autoplay muted loop></video>
+            </div>
+            <div class="ad-space">
+                <video src="images/path-to-video2.mp4" autoplay muted loop></video>
+            </div>
         </div>
     </div>
-
     <script>
-        function sortTable(tableId) {
-            const table = document.getElementById(tableId);
-            const rows = Array.from(table.rows).slice(1);
+        function calcularPuntosYClasificar(grupoId) {
+            const tabla = document.getElementById(grupoId);
+            const filas = Array.from(tabla.getElementsByTagName("tbody")[0].getElementsByTagName("tr"));
 
-            rows.sort((a, b) => {
-                const totalA = parseInt(a.cells[6].textContent);
-                const totalB = parseInt(b.cells[6].textContent);
-                return totalB - totalA;
+            // Calcular puntos para cada equipo
+            filas.forEach(fila => {
+                const golesAFavor = parseInt(fila.cells[1].innerText) || 0;
+                const golesEnContra = parseInt(fila.cells[2].innerText) || 0;
+                const victorias = parseInt(fila.cells[3].innerText) || 0;
+                const derrotas = parseInt(fila.cells[4].innerText) || 0;
+
+                const puntos = golesAFavor + victorias - golesEnContra - derrotas;
+                fila.cells[5].innerText = puntos; // Actualizar columna de puntos
+                fila.cells[6].innerText = puntos; // Actualizar columna total también
             });
 
-            rows.forEach(row => table.appendChild(row));
+            // Clasificar las filas por puntos
+            const filasClasificadas = filas.sort((a, b) => {
+                const puntosA = parseInt(a.cells[5].innerText) || 0;
+                const puntosB = parseInt(b.cells[5].innerText) || 0;
+                return puntosB - puntosA; // Ordenar de mayor a menor
+            });
+
+            // Limpiar tbody y volver a agregar las filas ordenadas
+            const tbody = tabla.getElementsByTagName("tbody")[0];
+            tbody.innerHTML = ""; // Limpiar filas existentes
+
+            filasClasificadas.forEach(fila => {
+                tbody.appendChild(fila); // Agregar filas ordenadas
+            });
         }
 
-        window.onload = () => {
-            sortTable('grupoA');
-            sortTable('grupoB');
-        };
+        // Ejecutar la función para cada grupo
+        calcularPuntosYClasificar("grupoA");
+        calcularPuntosYClasificar("grupoB");
     </script>
 </body>
 </html>
