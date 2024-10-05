@@ -257,8 +257,8 @@
                         <td>2</td>
                         <td>0</td>
                         <td>1</td>
-                        <td>0</td>
-                        <td>0</td>
+                        <td>1</td>
+                        <td>1</td>
                     </tr>
                     <tr>
                         <td>1ro Basico B</td>
@@ -266,8 +266,8 @@
                         <td>1</td>
                         <td>2</td>
                         <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
+                        <td>6</td>
+                        <td>6</td>
                     </tr>
                     <tr>
                         <td>1ro Basico C</td>
@@ -275,8 +275,8 @@
                         <td>1</td>
                         <td>0</td>
                         <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
+                        <td>2</td>
+                        <td>2</td>
                     </tr>
                     <tr>
                         <td>2do Basico A</td>
@@ -284,35 +284,26 @@
                         <td>1</td>
                         <td>1</td>
                         <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
+                        <td>4</td>
+                        <td>4</td>
                     </tr>
                     <tr>
                         <td>2do Basico B</td>
                         <td>3</td>
                         <td>4</td>
                         <td>0</td>
-                        <td>2</td>
-                        <td>0</td>
-                        <td>0</td>
-                    </tr>
-                    <tr>
-                        <td>3ro Basico A</td>
-                        <td>3</td>
-                        <td>0</td>
                         <td>1</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
+                        <td>1</td>
+                        <td>1</td>
                     </tr>
                     <tr>
                         <td>3ro Basico B</td>
                         <td>3</td>
                         <td>6</td>
                         <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
                     </tr>
                 </tbody>
             </table>
@@ -349,13 +340,22 @@
                 </thead>
                 <tbody>
                     <tr>
+                        <td>3ro Basico A</td>
+                        <td>3</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>3</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
                         <td>4to Bach</td>
                         <td>2</td>
                         <td>2</td>
                         <td>0</td>
                         <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
+                        <td>1</td>
+                        <td>1</td>
                     </tr>
                     <tr>
                         <td>5to Bach A</td>
@@ -372,8 +372,8 @@
                         <td>0</td>
                         <td>2</td>
                         <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
+                        <td>6</td>
+                        <td>6</td>
                     </tr>
                     <tr>
                         <td>4to Perito</td>
@@ -390,8 +390,8 @@
                         <td>2</td>
                         <td>1</td>
                         <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
+                        <td>4</td>
+                        <td>4</td>
                     </tr>
                 </tbody>
             </table>
@@ -424,18 +424,6 @@
         function calcularPuntosYClasificar(grupoId) {
             const tabla = document.getElementById(grupoId);
             const filas = Array.from(tabla.getElementsByTagName("tbody")[0].getElementsByTagName("tr"));
-
-            // Calcular puntos para cada equipo
-            filas.forEach(fila => {
-                const golesAFavor = parseInt(fila.cells[1].innerText) || 0;
-                const golesEnContra = parseInt(fila.cells[2].innerText) || 0;
-                const victorias = parseInt(fila.cells[3].innerText) || 0;
-                const derrotas = parseInt(fila.cells[4].innerText) || 0;
-
-                const puntos = golesAFavor + victorias - golesEnContra - derrotas;
-                fila.cells[5].innerText = puntos; // Actualizar columna de puntos
-                fila.cells[6].innerText = puntos; // Actualizar columna total también
-            });
 
             // Clasificar las filas por puntos
             const filasClasificadas = filas.sort((a, b) => {
