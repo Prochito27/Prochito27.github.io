@@ -15,6 +15,54 @@
             padding: 0;
         }
 
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: yellow;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        #overlay h1 {
+            font-size: 4em;
+            color: black;
+            font-weight: bold;
+        }
+        #fireworks {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        /* Estilo de la pantalla de anuncio */
+        #anuncio {
+            background-color: yellow;
+            color: black;
+            font-size: 50px;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 100;
+        }
+        /* Oculta el anuncio después de que desaparezca */
+        #anuncio.fade-out {
+            opacity: 0;
+            transition: opacity 2s ease;
+        }
         .header, .footer {
             background-color: #3498db;
             color: white;
@@ -228,6 +276,13 @@
         </div>
     </div>
 
+    <div id="overlay">
+        <h1>Mañana! Gran Final!! Champions LCZ 2024</h1>
+    </div>
+
+    <!-- Canvas for Fireworks -->
+    <canvas id="fireworks"></canvas>
+
     <!-- Imagen Centrada -->
     <div class="image-container">
         <img src="images/path_to_image.jpeg" alt="Imagen Principal">
@@ -242,68 +297,82 @@
                 <thead>
                     <tr>
                         <th>Equipo</th>
-                        <th>Goles a Favor</th>
-                        <th>Goles en Contra</th>
-                        <th>Victorias</th>
-                        <th>Derrotas</th>
-                        <th>Puntos</th>
-                        <th>Total</th>
+                        <th>PJ</th>
+                        <th>PG</th>
+                        <th>PE</th>
+                        <th>PP</th>
+                        <th>GF</th>
+                        <th>GC</th>
+                        <th>DE</th>
+                        <th>Pts</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>1ro Basico A</td>
-                        <td>1</td>
-                        <td>2</td>
+                        <td>4</td>
                         <td>0</td>
                         <td>1</td>
-                        <td>1</td>
+                        <td>3</td>
+                        <td>2</td>
+                        <td>7</td>
+                        <td>-5</td>
                         <td>1</td>
                     </tr>
                     <tr>
                         <td>1ro Basico B</td>
-                        <td>3</td>
+                        <td>4</td>
+                        <td>1</td>
                         <td>1</td>
                         <td>2</td>
-                        <td>0</td>
-                        <td>6</td>
-                        <td>6</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>-1</td>
+                        <td>4</td>
                     </tr>
                     <tr>
                         <td>1ro Basico C</td>
-                        <td>1</td>
-                        <td>1</td>
+                        <td>4</td>
                         <td>0</td>
-                        <td>0</td>
-                        <td>2</td>
+                        <td>3</td>
+                        <td>1</td>
+                        <td>3</td>
+                        <td>6</td>
+                        <td>-3</td>
                         <td>2</td>
                     </tr>
                     <tr>
                         <td>2do Basico A</td>
                         <td>4</td>
-                        <td>1</td>
+                        <td>3</td>
                         <td>1</td>
                         <td>0</td>
-                        <td>4</td>
-                        <td>4</td>
+                        <td>6</td>
+                        <td>0</td>
+                        <td>+6</td>
+                        <td>10</td>
                     </tr>
                     <tr>
                         <td>2do Basico B</td>
-                        <td>3</td>
                         <td>4</td>
+                        <td>2</td>
+                        <td>2</td>
                         <td>0</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
+                        <td>9</td>
+                        <td>4</td>
+                        <td>+5</td>
+                        <td>8</td>
                     </tr>
                     <tr>
                         <td>3ro Basico B</td>
-                        <td>3</td>
+                        <td>4</td>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>1</td>
                         <td>6</td>
-                        <td>0</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
+                        <td>8</td>
+                        <td>-2</td>
+                        <td>5</td>
                     </tr>
                 </tbody>
             </table>
@@ -330,68 +399,82 @@
                 <thead>
                     <tr>
                         <th>Equipo</th>
-                        <th>Goles a Favor</th>
-                        <th>Goles en Contra</th>
-                        <th>Victorias</th>
-                        <th>Derrotas</th>
-                        <th>Puntos</th>
-                        <th>Total</th>
+                        <th>PJ</th>
+                        <th>PG</th>
+                        <th>PE</th>
+                        <th>PP</th>
+                        <th>GF</th>
+                        <th>GC</th>
+                        <th>DE</th>
+                        <th>Pts</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>3ro Basico A</td>
+                        <td>5</td>
                         <td>3</td>
                         <td>0</td>
-                        <td>1</td>
-                        <td>0</td>
-                        <td>3</td>
-                        <td>3</td>
+                        <td>2</td>
+                        <td>9</td>
+                        <td>7</td>
+                        <td>+2</td>
+                        <td>9</td>
                     </tr>
                     <tr>
                         <td>4to Bach</td>
-                        <td>2</td>
-                        <td>2</td>
+                        <td>4</td>
                         <td>0</td>
-                        <td>0</td>
+                        <td>3</td>
                         <td>1</td>
-                        <td>1</td>
+                        <td>7</td>
+                        <td>8</td>
+                        <td>-1</td>
+                        <td>3</td>
                     </tr>
                     <tr>
                         <td>5to Bach A</td>
-                        <td>0</td>
+                        <td>5</td>
                         <td>2</td>
-                        <td>0</td>
+                        <td>1</td>
                         <td>2</td>
-                        <td>0</td>
-                        <td>0</td>
+                        <td>6</td>
+                        <td>3</td>
+                        <td>+3</td>
+                        <td>7</td>
                     </tr>
                     <tr>
                         <td>5to Bach B</td>
-                        <td>5</td>
-                        <td>0</td>
+                        <td>4</td>
                         <td>2</td>
                         <td>0</td>
+                        <td>2</td>
+                        <td>5</td>
                         <td>6</td>
+                        <td>-1</td>
                         <td>6</td>
                     </tr>
                     <tr>
                         <td>4to Perito</td>
+                        <td>4</td>
                         <td>0</td>
-                        <td>7</td>
-                        <td>0</td>
-                        <td>2</td>
-                        <td>0</td>
-                        <td>0</td>
+                        <td>1</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>12</td>
+                        <td>-8</td>
+                        <td>1</td>
                     </tr>
                     <tr>
                         <td>5to Perito</td>
+                        <td>4</td>
                         <td>3</td>
-                        <td>2</td>
                         <td>1</td>
                         <td>0</td>
+                        <td>10</td>
                         <td>4</td>
-                        <td>4</td>
+                        <td>+6</td>
+                        <td>10</td>
                     </tr>
                 </tbody>
             </table>
@@ -420,30 +503,121 @@
             </div>
         </div>
     </div>
-    <script>
-        function calcularPuntosYClasificar(grupoId) {
-            const tabla = document.getElementById(grupoId);
-            const filas = Array.from(tabla.getElementsByTagName("tbody")[0].getElementsByTagName("tr"));
+     <!-- Confetti JS Script -->
+     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 
-            // Clasificar las filas por puntos
-            const filasClasificadas = filas.sort((a, b) => {
-                const puntosA = parseInt(a.cells[5].innerText) || 0;
-                const puntosB = parseInt(b.cells[5].innerText) || 0;
-                return puntosB - puntosA; // Ordenar de mayor a menor
-            });
+     <script>
+         // Mostrar el overlay con confeti
+         function mostrarPantallaFinal() {
+             const duration = 7 * 1000;
+             const end = Date.now() + duration;
+ 
+             // Confetti aleatorio durante 7 segundos
+             (function lanzarConfeti() {
+                 confetti({
+                     particleCount: 3,
+                     angle: 60,
+                     spread: 55,
+                     origin: { x: 0 },
+                     zIndex: 10001
+                 });
+                 confetti({
+                     particleCount: 3,
+                     angle: 120,
+                     spread: 55,
+                     origin: { x: 1 },
+                     zIndex: 10001
+                 });
+ 
+                 if (Date.now() < end) {
+                     requestAnimationFrame(lanzarConfeti);
+                 }
+             }());
+ 
+             // Desaparecer la pantalla amarilla después de 7 segundos
+             setTimeout(function () {
+                 document.getElementById('overlay').style.transition = 'opacity 1s';
+                 document.getElementById('overlay').style.opacity = '0';
+ 
+                 setTimeout(function () {
+                     document.getElementById('overlay').style.display = 'none';
+                     lanzarFuegosArtificiales(); // Iniciar fuegos artificiales
+                 }, 1000);
+             }, 7000);
+         }
+ 
+         // Función para lanzar fuegos artificiales
+         function lanzarFuegosArtificiales() {
+             var canvas = document.getElementById('fireworks');
+             var ctx = canvas.getContext('2d');
+             canvas.width = window.innerWidth;
+             canvas.height = window.innerHeight;
+ 
+             var particles = [];
+             var tick = 0;
+             var fireworksAnimation;
+ 
+             function random(min, max) {
+                 return Math.random() * (max - min) + min;
+             }
+ 
+             function createFirework(x, y) {
+                 var particleCount = 100;
+                 while (particleCount--) {
+                     particles.push({
+                         x: x,
+                         y: y,
+                         radius: random(2, 4),
+                         speedX: random(-5, 5),
+                         speedY: random(-10, -2),
+                         alpha: 1,
+                         hue: random(0, 360)
+                     });
+                 }
+             }
+ 
+             function drawFireworks() {
+                 ctx.globalCompositeOperation = 'destination-out';
+                 ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
+                 ctx.fillRect(0, 0, canvas.width, canvas.height);
+ 
+                 ctx.globalCompositeOperation = 'lighter';
+ 
+                 particles.forEach(function(particle, index) {
+                     ctx.beginPath();
+                     ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2, false);
+                     ctx.fillStyle = 'hsla(' + particle.hue + ', 100%, 50%, ' + particle.alpha + ')';
+                     ctx.fill();
+ 
+                     particle.x += particle.speedX;
+                     particle.y += particle.speedY;
+                     particle.alpha -= 0.02;
+ 
+                     if (particle.alpha <= 0) {
+                         particles.splice(index, 1);
+                     }
+                 });
+ 
+                 tick++;
+                 if (tick % 15 === 0) {
+                     createFirework(random(0, canvas.width), random(0, canvas.height / 2));
+                 }
+ 
+                 fireworksAnimation = requestAnimationFrame(drawFireworks);
+             }
+ 
+             drawFireworks();
+ 
+             // Detener los fuegos artificiales después de 5 segundos
+             setTimeout(function () {
+                 cancelAnimationFrame(fireworksAnimation);  // Detener la animación
+                 ctx.clearRect(0, 0, canvas.width, canvas.height);  // Limpiar el canvas
+             }, 5000); // Duran 5 segundos
+         }
+ 
+         // Ejecutar al cargar la página
+         window.onload = mostrarPantallaFinal;
+     </script>
 
-            // Limpiar tbody y volver a agregar las filas ordenadas
-            const tbody = tabla.getElementsByTagName("tbody")[0];
-            tbody.innerHTML = ""; // Limpiar filas existentes
-
-            filasClasificadas.forEach(fila => {
-                tbody.appendChild(fila); // Agregar filas ordenadas
-            });
-        }
-
-        // Ejecutar la función para cada grupo
-        calcularPuntosYClasificar("grupoA");
-        calcularPuntosYClasificar("grupoB");
-    </script>
 </body>
 </html>
