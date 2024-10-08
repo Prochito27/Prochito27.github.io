@@ -635,6 +635,25 @@
  
          // Ejecutar al cargar la página
          window.onload = mostrarPantallaFinal;
+                 function calcularPuntosYClasificar(grupoId) {
+            const tabla = document.getElementById(grupoId);
+            const filas = Array.from(tabla.getElementsByTagName("tbody")[0].getElementsByTagName("tr"));
+
+            // Clasificar las filas por puntos
+            const filasClasificadas = filas.sort((a, b) => {
+                const puntosA = parseInt(a.cells[8].innerText) || 0;
+                const puntosB = parseInt(b.cells[8].innerText) || 0;
+                return puntosB - puntosA; // Ordenar de mayor a menor
+            });
+
+            // Limpiar tbody y volver a agregar las filas ordenadas
+            const tbody = tabla.getElementsByTagName("tbody")[0];
+            tbody.innerHTML = ""; // Limpiar filas existentes
+
+            filasClasificadas.forEach(fila => {
+                tbody.appendChild(fila); // Agregar filas ordenadas
+            });
+        }
      </script>
 
 </body>
