@@ -527,7 +527,7 @@
      <script>
          // Mostrar el overlay con confeti
          function mostrarPantallaFinal() {
-             const duration = 7 * 1000;
+             const duration = 6 * 1000;
              const end = Date.now() + duration;
  
              // Confetti aleatorio durante 7 segundos
@@ -561,7 +561,7 @@
                      document.getElementById('overlay').style.display = 'none';
                      lanzarFuegosArtificiales(); // Iniciar fuegos artificiales
                  }, 1000);
-             }, 7000);
+             }, 6000);
          }
  
          // Función para lanzar fuegos artificiales
@@ -635,7 +635,7 @@
  
          // Ejecutar al cargar la página
          window.onload = mostrarPantallaFinal;
-                 function calcularPuntosYClasificar(grupoId) {
+         function calcularPuntosYClasificar(grupoId) {
             const tabla = document.getElementById(grupoId);
             const filas = Array.from(tabla.getElementsByTagName("tbody")[0].getElementsByTagName("tr"));
 
@@ -654,7 +654,11 @@
                 tbody.appendChild(fila); // Agregar filas ordenadas
             });
         }
-     </script>
+
+        // Ejecutar la función para cada grupo
+        calcularPuntosYClasificar("grupoA");
+        calcularPuntosYClasificar("grupoB");
+    </script>
 
 </body>
 </html>
